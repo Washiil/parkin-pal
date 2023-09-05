@@ -19,14 +19,16 @@
 
 <div>
 	{#each passes as pass (pass.id)}
-		<div class="card p-2 {pass.valid ? 'variant-ghost-success' : 'variant-ghost-error'} text-left p-10">
+		<div class="card p-4 {pass.valid ? 'variant-ghost-success' : 'variant-ghost-error'} text-left p-10">
 			<div class='inline-block max-w-3xl'>
 				<h1>{pass.valid ? 'Valid' : 'Invalid'} Parking Pass</h1>
 				<br>
 				<p>User ID: {pass.user}</p>
 			</div>
 			<div class='inline-block p-4 text-center ml-6 border rounded'>
-				<h1>{Math.round((new Date(pass.expiration).valueOf() - Date.now().valueOf()) / (1000 * 3600 * 24))} Days</h1>
+				<h1>{Math.round((new Date(pass.expiration).valueOf() - Date.now().valueOf()) / (1000 * 3600 * 24))}</h1>
+				<br>
+				<h1>Days</h1>
 			</div>
 		</div>
 	{/each}
