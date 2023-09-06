@@ -4,14 +4,22 @@
 	import { goto } from '$app/navigation';
 
 	export let isSignUp = true;
+	export let adminLogin = false;
 
 	let email: string
 	let password: string
 	let passwordConfirm: string
 
 	async function login() {
-		await pb.collection('users').authWithPassword(email, password)
-		goto('/dashboard')
+		if(adminLogin) {
+			console.log("HEYYY")
+			await pb.admins.authWithPassword(email, password)
+			console.log(pb.authStore)
+		}
+		else {
+			await pb.collection('users').authWithPassword(email, password)
+		}
+		// goto('/dashboard')
 	}
 
 	function switch_type() {
