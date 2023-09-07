@@ -11,15 +11,12 @@
 	let passwordConfirm: string
 
 	async function login() {
-		if(adminLogin) {
-			console.log("HEYYY")
-			await pb.admins.authWithPassword(email, password)
-			console.log(pb.authStore)
-		}
-		else {
+		// TODO: Clean this up because it wastes a request to the database
+		try {
 			await pb.collection('users').authWithPassword(email, password)
+		} catch (error) {
+			await pb.admins.authWithPassword(email, password)
 		}
-		// goto('/dashboard')
 	}
 
 	function switch_type() {

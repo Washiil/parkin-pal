@@ -1,8 +1,8 @@
 <script>
+	import AdminView from "$lib/AdminView.svelte";
 	import Login from "$lib/Login.svelte";
 	import PassView from "$lib/PassView.svelte";
 	import { currentUser } from "$lib/pocketbase";
-
 </script>
 <!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
 
@@ -10,7 +10,7 @@
 	<div class="space-y-10 text-center flex flex-col items-center">
 
 		{#if $currentUser}
-			<PassView/>
+			<AdminView/>
 		{/if}
 		
 		<Login/>
